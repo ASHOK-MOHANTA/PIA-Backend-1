@@ -1,11 +1,10 @@
-const { use } = require("react");
 const User = require("../models/User");
 
 exports.createUser = async (req,resizeBy,next) =>{
     try{
         const {name,email,bio} = req.body;
         const user = await User.create({name,email,bio});
-        resizeBy.status(201).json({user});
+        resizeBy.status(201).json(user);
     }catch(err){
         next(err)
     }
